@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "": "vendor\\brunodiego5\\php-classes\\src"
+            "Cpw\\": "vendor\\challengephpweb\\php-classes\\src"
         }
     }
 }

@@ -6,8 +6,18 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit42436b4001f29a71f57470b73f3f1f6e
 {
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/..' . '/brunodiego5/php-classes/src',
+    public static $prefixLengthsPsr4 = array (
+        'C' => 
+        array (
+            'Cpw\\' => 4,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Cpw\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/challengephpweb/php-classes/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -30,7 +40,8 @@ class ComposerStaticInit42436b4001f29a71f57470b73f3f1f6e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->fallbackDirsPsr4 = ComposerStaticInit42436b4001f29a71f57470b73f3f1f6e::$fallbackDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit42436b4001f29a71f57470b73f3f1f6e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit42436b4001f29a71f57470b73f3f1f6e::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit42436b4001f29a71f57470b73f3f1f6e::$prefixesPsr0;
 
         }, null, ClassLoader::class);
