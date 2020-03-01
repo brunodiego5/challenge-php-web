@@ -64,6 +64,20 @@ class Sql {
 
 	}
 
+	public function insert($rawQuery, $params = array())
+	{
+		// $this->conn->beginTransaction();
+		$stmt = $this->conn->prepare($rawQuery);
+
+		$this->setParams($stmt, $params);
+
+		$stmt->execute();
+		$id = $this->conn->lastInsertId();
+		// $this->conn->commit();
+		return $id; 
+
+	}
+
 }
 
  ?>

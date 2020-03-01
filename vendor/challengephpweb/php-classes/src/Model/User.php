@@ -62,6 +62,108 @@ class User extends Model{
   {
     $_SESSION[User::SESSION] = null;
   }
+
+  public static function listAll()
+  {
+    $sql = new Sql();
+
+    return $sql->select(" select u.id, u.people_id, u.login, u.password, u.isadmin, " . 
+      " p.name, p.email, p.rg, p.cpf, p.date_birth, p.phone " .  
+      " from db_challenge_php_web.users u inner " .
+      " join db_challenge_php_web.people p on p.id = u.people_id order by p.name");    
+  }
+
+  public function save()  {
+    $sql = new Sql();
+
+    /**
+     * gets are dynamic
+    */
+
+    $personId = $sql->insert("insert into people(name, email) values (:name, :email)", array(
+      ":name"=>$this->getname(), 
+      ":email"=>$this->getemail()
+    ));
+
+   
+    $userId = $sql->insert("insert into users(people_id, login, password, isadmin) values (:people_id, :login, :password, :isadmin) ", array(
+      ":people_id"=>$personId,
+      ":login"=>$this->getlogin(),
+      ":password"=>$this->getpassword(),
+      ":isadmin"=>$this->getisadmin()
+    ));
+
+    $user = $sql->select("select u.id, u.people_id, u.login, u.password, u.isadmin, " . 
+    " p.name, p.email, p.rg, p.cpf, p.date_birth, p.phone " .  
+    " from db_challenge_php_web.users u inner " .
+    " join db_challenge_php_web.people p on p.id = u.people_id where u.id = :id ", array(
+      ":id"=>$userId
+    ));
+
+    $this->setData($user[0]);
+
+  }
+
+  public function get($userId)
+  {
+    $sql = new Sql();
+
+    $user = $sql->select("select u.id, u.people_id, u.login, u.password, u.isadmin, " . 
+    " p.name, p.email, p.rg, p.cpf, p.date_birth, p.phone " .  
+    " from db_challenge_php_web.users u inner " .
+    " join db_challenge_php_web.people p on p.id = u.people_id where u.id = :id ", array(
+      ":id"=>$userId
+    ));
+
+    $this->setData($user[0]);
+  }
+
+  public function update()  {
+    $sql = new Sql();
+
+    /**
+     * gets are dynamic
+    */
+
+    $sql->query("update people set name = :name, email = :email where id = :id", array(
+      ":name"=>$this->getname(), 
+      ":email"=>$this->getemail(),
+      ":id"=>$this->getpeople_id()
+    ));
+
+   
+    $sql->query("update users set login = :login, password = :password, isadmin = :isadmin where id = :id ", array(
+      ":login"=>$this->getlogin(),
+      ":password"=>$this->getpassword(),
+      ":isadmin"=>$this->getisadmin(),
+      ":id"=>$this->getid()
+    ));
+
+    $user = $sql->select("select u.id, u.people_id, u.login, u.password, u.isadmin, " . 
+    " p.name, p.email, p.rg, p.cpf, p.date_birth, p.phone " .  
+    " from db_challenge_php_web.users u inner " .
+    " join db_challenge_php_web.people p on p.id = u.people_id where u.id = :id ", array(
+      ":id"=>$this->getid()
+    ));
+
+    $this->setData($user[0]);
+
+  }
+
+  public function delete()
+  {
+    $sql = new Sql();
+
+    $sql->query("delete from users where id = :id ", array(
+      ":id"=>$this->getid()
+    ));
+
+    $sql->query("delete from people where id = :id", array(
+      ":id"=>$this->getpeople_id()
+    ));
+   
+  }
+
 }
 
 ?>

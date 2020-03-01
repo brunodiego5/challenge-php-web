@@ -6,15 +6,16 @@ DROP TABLE IF EXISTS `db_challenge_php_web`.`people`;
 CREATE TABLE `db_challenge_php_web`.`people` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `email` varchar(128) NOT NULL,
-  `rg` varchar(20) NOT NULL,
-  `cpf` varchar(20) NOT NULL,
-  `date_birth` timestamp NOT NULL,
+  `email` varchar(128) NULL,
+  `rg` varchar(20) NULL,
+  `cpf` varchar(20) NULL,
+  `date_birth` timestamp NULL,
+  `phone` varchar(30) null,
   `date_register` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
-INSERT INTO `db_challenge_php_web`.`people` VALUES (1,'Bruno Diego','admin@com.br',115000768,26613318086,'1989-11-12 00:00:00','2020-02-29 00:24:00');
+INSERT INTO `db_challenge_php_web`.`people` VALUES (1,'Bruno Diego','admin@com.br',115000768,26613318086,'1989-11-12 00:00:00',null,'2020-02-29 00:24:00');
 
 DROP TABLE IF EXISTS `db_challenge_php_web`.`users`;
 

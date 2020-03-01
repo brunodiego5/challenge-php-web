@@ -6,4 +6,13 @@
   <title>Challenge PHP Web</title>
 </head>
 <body>
+  <header>
+    <nav>
+      <ul style="list-style: none;">
+        <li>
+          <a href="/admin/users">Usuários</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
   
