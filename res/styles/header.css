@@ -1,0 +1,71 @@
+header.container {
+  background: #fff;
+  padding: 0 30px;
+  border: 1px solid #dddddd;
+}
+
+header.container div.content {
+  height: 64px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header.container div.content nav {
+  display: flex;
+  align-items: center;  
+}
+
+header.container div.content nav img {
+  margin-right: 20px;
+  padding-right: 20px;
+  border-right: 1px solid #dddddd;
+}
+
+header.container div.content nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+header.container div.content nav ul li {
+  margin-right: 20px;
+}
+
+header.container div.content nav ul li:first-child {
+  margin-left: 30px;
+}
+
+header.container div.content nav ul li a.menu {
+  font-weight: bold;
+  color: #999;
+}
+
+header.container div.content aside {
+    display: flex;
+    align-items: center;
+}
+
+header.container div.content aside div.profile {
+  display: flex;
+  margin-left: 20px;
+  padding-left: 20px;
+
+}
+
+header.container div.content aside div.profile div {
+  text-align: right;
+  margin-right: 10px;
+}
+
+header.container div.content aside div.profile div strong {
+  display: block;
+  color: #333;
+}
+
+header.container div.content aside div.profile div span {
+  cursor: pointer;
+  color: #DE3B3B;
+}

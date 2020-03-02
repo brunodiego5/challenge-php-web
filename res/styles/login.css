@@ -1,0 +1,94 @@
+div.wrapper {
+  height: 100%;
+  /*background: linear-gradient(-30deg, #fa5b13, #1370ba);  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #1370ba;
+}
+
+div.wrapper div.content {
+  /*width: 100%;
+  max-width: 315px;*/
+  text-align: center;
+
+  background: #fff;
+  border-radius: 4px;
+  padding: 30px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  width: 360px;  
+}
+
+div.wrapper div.content img {
+  height: 120px;
+  width: 120px;
+  color: #fff;
+}
+
+div.wrapper div.content form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+div.wrapper div.content form input {
+
+  /*background: rgba(0, 0, 0, 0.1);
+  border: 0;
+  border-radius: 4px;
+  height: 44px;
+  padding: 0 15px;
+  color: #fff;
+  margin: 0 0 10px;*/
+
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  height: 44px;
+  padding: 0 15px;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+div.wrapper div.content form label {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  color: #444444;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+div.wrapper div.content form input::placeholder{
+  /*color: rgba(255, 255, 255, 0.7);*/
+  color: #999;
+}
+
+div.wrapper div.content form button {
+  /*margin: 5px 0 0;
+  height: 44px;
+  background: #fa5b13;
+  font-weight: bold;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background 0.2s ease;*/
+
+  margin: 5px 0 0;
+  height: 44px;
+  background:  #fa5b13;
+  font-weight: bold;
+  border: 0;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background 0.2s;
+
+}
+
+div.wrapper div.content form button:hover{
+  background: #d74909;
+}

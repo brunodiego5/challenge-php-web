@@ -71,6 +71,22 @@ class User extends Model{
 
     return $users;
   }
+
+  public static function getFromSession()
+	{
+
+		$user = new User();
+
+		if (isset($_SESSION[User::SESSION]) && (int)$_SESSION[User::SESSION]['id'] > 0) {
+
+			$user->setData($_SESSION[User::SESSION]);
+
+		}
+
+		return $user;
+
+	}
+
   
   public function get($userId)
   {
@@ -82,7 +98,7 @@ class User extends Model{
 
     $user = $data[0];
 
-    $user['name'] = utf8_encode($data['name']);
+    $user['name'] = utf8_encode($user['name']);
 
     $this->setData($user);
   }
