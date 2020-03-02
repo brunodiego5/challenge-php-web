@@ -10,20 +10,32 @@ class Address extends Model{
   {
     $sql = new Sql();
 
-    return $sql->select(" select * from addresses where customer_id = :customer_id ", array(
+    $data = $sql->select(" select * from addresses where customer_id = :customer_id ", array(
       ":customer_id"=>$customerId
-    ));    
+    ));
+
+    $addresses = Address::utf8_string_array_encode($data);
+
+    return $addresses;
   }
 
   public function get($addressId)
   {
     $sql = new Sql();
 
-    $address = $sql->select(" select * from addresses where id = :id ", array(
+    $data = $sql->select(" select * from addresses where id = :id ", array(
       ":id"=>$addressId
     ));
+
+    $address = $data[0];
+    $address['address'] = utf8_encode($address['address']);
+    $address['complement'] = utf8_encode($address['complement']);
+    $address['city'] = utf8_encode($address['city']);
+    $address['state'] = utf8_encode($address['state']);
+    $address['country'] = utf8_encode($address['country']);
+    $address['zip_code'] = utf8_encode($address['zip_code']);
     
-    $this->setData($address[0]);
+    $this->setData($address);
   }
 
   public function save()  {
@@ -36,12 +48,12 @@ class Address extends Model{
     $addressId = $sql->insert("insert into addresses(customer_id, address, complement, city, state, country, zip_code) 
       "." values (:customer_id, :address, :complement, :city, :state, :country, :zip_code) ", array(
       ":customer_id"=>$this->getcustomer_id(),
-      ":address"=>$this->getaddress(),
-      ":complement"=>$this->getcomplement(),
-      ":city"=>$this->getcity(),
-      ":state"=>$this->getstate(),
-      ":country"=>$this->getcountry(),
-      ":zip_code"=>$this->getzip_code()
+      ":address"=>utf8_decode($this->getaddress()),
+      ":complement"=>utf8_decode($this->getcomplement()),
+      ":city"=>utf8_decode($this->getcity()),
+      ":state"=>utf8_decode($this->getstate()),
+      ":country"=>utf8_decode($this->getcountry()),
+      ":zip_code"=>utf8_decode($this->getzip_code())
     ));
 
     $this->get($addressId);
@@ -62,12 +74,12 @@ class Address extends Model{
       "." city = :city, state = :state, country = :country, zip_code = :zip_code
       "." where id = :id ", array(
       ":customer_id"=>$this->getcustomer_id(),
-      ":address"=>$this->getaddress(),
-      ":complement"=>$this->getcomplement(),
-      ":city"=>$this->getcity(),
-      ":state"=>$this->getstate(),
-      ":country"=>$this->getcountry(),
-      ":zip_code"=>$this->getzip_code(),
+      ":address"=>utf8_decode($this->getaddress()),
+      ":complement"=>utf8_decode($this->getcomplement()),
+      ":city"=>utf8_decode($this->getcity()),
+      ":state"=>utf8_decode($this->getstate()),
+      ":country"=>utf8_decode($this->getcountry()),
+      ":zip_code"=>utf8_decode($this->getzip_code()),
       ":id"=>$addressId
     ));
 

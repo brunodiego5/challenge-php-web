@@ -57,6 +57,7 @@ $app->post('/customers/:customerId/addresses/create', function($customerId) {
 
   $address = new Address();
   $_POST['customer_id'] = $customerId;
+  if (!$_POST['complement']) $_POST['complement'] = "";
 
 	$address->setData($_POST);
 

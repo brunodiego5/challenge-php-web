@@ -65,20 +65,28 @@ class User extends Model{
   {
     $sql = new Sql();
 
-    return $sql->select("select * from users order by name");    
+    $data = $sql->select("select * from users order by name");    
+
+    $users = User::utf8_string_array_encode($data);
+
+    return $users;
   }
   
   public function get($userId)
   {
     $sql = new Sql();
 
-    $user = $sql->select("select * from users where id = :id ", array(
+    $data = $sql->select("select * from users where id = :id ", array(
       ":id"=>$userId
     ));
 
-    $this->setData($user[0]);
+    $user = $data[0];
+
+    $user['name'] = utf8_encode($data['name']);
+
+    $this->setData($user);
   }
-  
+
   public function save()  {
     $sql = new Sql();
 
@@ -87,7 +95,7 @@ class User extends Model{
     */
 
     $userId = $sql->insert("insert into users(name, email, password) values (:name, :email, :password) ", array(
-      ":name"=>$this->getname(),
+      ":name"=>utf8_decode($this->getname()),
       ":email"=>$this->getemail(),
       ":password"=>$this->getpassword()
     ));
@@ -107,7 +115,7 @@ class User extends Model{
     $userId = $this->getid();
 
     $sql->query("update users set name = :name, email = :email, password = :password where id = :id ", array(
-      ":name"=>$this->getname(),
+      ":name"=>utf8_decode($this->getname()),
       ":email"=>$this->getemail(),
       ":password"=>$this->getpassword(),
       ":id"=>$userId
