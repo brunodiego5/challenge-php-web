@@ -1,4 +1,4 @@
-<!-- Content Wrapper. Contains page content -->
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -18,24 +18,15 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="/admin/users/{$user.id}" method="post">
+        <form role="form" action="/users/<?php echo htmlspecialchars( $user["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" method="post">
           <div class="box-body">
             <div class="form-group">
               <label for="name">Nome</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome" value="{$user.name}">
-            </div>
-            <div class="form-group">
-              <label for="login">Login</label>
-              <input type="text" class="form-control" id="login" name="login" placeholder="Digite o login"  value="{$user.login}">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome" value="<?php echo htmlspecialchars( $user["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
             <div class="form-group">
               <label for="email">E-mail</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="Digite o e-mail" value="{$user.email}">
-            </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" name="isadmin" value="1" {if="$user.isadmin == 1"}checked{/if}> Acesso de Administrador
-              </label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Digite o e-mail" value="<?php echo htmlspecialchars( $user["email"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
             </div>
           </div>
           <!-- /.box-body -->

@@ -8,13 +8,13 @@ use \Cpw\Model;
 class User extends Model{
   const SESSION = "User";
 
-  public static function login($login, $password)
+  public static function login($email, $password)
   {
 
     $sql = new Sql();
 
-    $results = $sql->select("select * from users where login = :login", array(
-      ":login"=>$login
+    $results = $sql->select("select * from users where email = :email", array(
+      ":email"=>$email
     ));
 
     if (count($results) === 0)
@@ -42,18 +42,16 @@ class User extends Model{
 
   }
 
-  public static function verifyLogin($isadmin = true)
+  public static function verifyLogin()
   {
     if (
       !isset($_SESSION[User::SESSION])
       ||
       !$_SESSION[User::SESSION]
       ||
-      !(int)$_SESSION[User::SESSION]["id"] > 0
-      ||
-      (bool)$_SESSION[User::SESSION]["isadmin"] !== $isadmin
+      !(int)$_SESSION[User::SESSION]["id"] > 0     
     ) {
-      header("Location: /admin/login");
+      header("Location: /login");
       exit;
     }
   }
@@ -67,12 +65,20 @@ class User extends Model{
   {
     $sql = new Sql();
 
-    return $sql->select(" select u.id, u.people_id, u.login, u.password, u.isadmin, " . 
-      " p.name, p.email, p.rg, p.cpf, p.date_birth, p.phone " .  
-      " from db_challenge_php_web.users u inner " .
-      " join db_challenge_php_web.people p on p.id = u.people_id order by p.name");    
+    return $sql->select("select * from users order by name");    
   }
+  
+  public function get($userId)
+  {
+    $sql = new Sql();
 
+    $user = $sql->select("select * from users where id = :id ", array(
+      ":id"=>$userId
+    ));
+
+    $this->setData($user[0]);
+  }
+  
   public function save()  {
     $sql = new Sql();
 
@@ -80,43 +86,16 @@ class User extends Model{
      * gets are dynamic
     */
 
-    $personId = $sql->insert("insert into people(name, email) values (:name, :email)", array(
-      ":name"=>$this->getname(), 
-      ":email"=>$this->getemail()
+    $userId = $sql->insert("insert into users(name, email, password) values (:name, :email, :password) ", array(
+      ":name"=>$this->getname(),
+      ":email"=>$this->getemail(),
+      ":password"=>$this->getpassword()
     ));
 
-   
-    $userId = $sql->insert("insert into users(people_id, login, password, isadmin) values (:people_id, :login, :password, :isadmin) ", array(
-      ":people_id"=>$personId,
-      ":login"=>$this->getlogin(),
-      ":password"=>$this->getpassword(),
-      ":isadmin"=>$this->getisadmin()
-    ));
-
-    $user = $sql->select("select u.id, u.people_id, u.login, u.password, u.isadmin, " . 
-    " p.name, p.email, p.rg, p.cpf, p.date_birth, p.phone " .  
-    " from db_challenge_php_web.users u inner " .
-    " join db_challenge_php_web.people p on p.id = u.people_id where u.id = :id ", array(
-      ":id"=>$userId
-    ));
-
-    $this->setData($user[0]);
+    $this->get($userId);
 
   }
 
-  public function get($userId)
-  {
-    $sql = new Sql();
-
-    $user = $sql->select("select u.id, u.people_id, u.login, u.password, u.isadmin, " . 
-    " p.name, p.email, p.rg, p.cpf, p.date_birth, p.phone " .  
-    " from db_challenge_php_web.users u inner " .
-    " join db_challenge_php_web.people p on p.id = u.people_id where u.id = :id ", array(
-      ":id"=>$userId
-    ));
-
-    $this->setData($user[0]);
-  }
 
   public function update()  {
     $sql = new Sql();
@@ -125,28 +104,16 @@ class User extends Model{
      * gets are dynamic
     */
 
-    $sql->query("update people set name = :name, email = :email where id = :id", array(
-      ":name"=>$this->getname(), 
+    $userId = $this->getid();
+
+    $sql->query("update users set name = :name, email = :email, password = :password where id = :id ", array(
+      ":name"=>$this->getname(),
       ":email"=>$this->getemail(),
-      ":id"=>$this->getpeople_id()
-    ));
-
-   
-    $sql->query("update users set login = :login, password = :password, isadmin = :isadmin where id = :id ", array(
-      ":login"=>$this->getlogin(),
       ":password"=>$this->getpassword(),
-      ":isadmin"=>$this->getisadmin(),
-      ":id"=>$this->getid()
+      ":id"=>$userId
     ));
 
-    $user = $sql->select("select u.id, u.people_id, u.login, u.password, u.isadmin, " . 
-    " p.name, p.email, p.rg, p.cpf, p.date_birth, p.phone " .  
-    " from db_challenge_php_web.users u inner " .
-    " join db_challenge_php_web.people p on p.id = u.people_id where u.id = :id ", array(
-      ":id"=>$this->getid()
-    ));
-
-    $this->setData($user[0]);
+    $this->get($userId);
 
   }
 
@@ -156,12 +123,7 @@ class User extends Model{
 
     $sql->query("delete from users where id = :id ", array(
       ":id"=>$this->getid()
-    ));
-
-    $sql->query("delete from people where id = :id", array(
-      ":id"=>$this->getpeople_id()
-    ));
-   
+    ));   
   }
 
 }

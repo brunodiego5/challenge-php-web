@@ -1,0 +1,56 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Editar Endereço para o cliente {$customer.name}
+    </h1>
+  </section>
+  
+  <!-- Main content -->
+  <section class="content">
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-primary">
+          <!-- form start -->
+          <form role="form" action="/customers/{$customer.id}/addresses/{$address.id}" method="post">
+            <div class="box-body">
+              <div class="form-group">
+                <label for="address">Endereço</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Digite o Endereço" value="{$address.address}">
+              </div>
+              <div class="form-group">
+                <label for="complement">Complemento</label>
+                <input type="text" class="form-control" id="complement" name="complement" placeholder="Digite o Complemento" value="{$address.complement}">
+              </div>
+              <div class="form-group">
+                <label for="city">Cidade</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Digite a cidade" value="{$address.city}">
+              </div>
+              <div class="form-group">
+                <label for="state">Estado</label>
+                <input type="text" class="form-control" id="state" name="state" placeholder="Digite o Estado" value="{$address.state}">
+              </div>
+              <div class="form-group">
+                <label for="country">País</label>
+                <input type="text" class="form-control" id="country" name="country" placeholder="Digite o país" value="{$address.country}">
+              </div>
+              <div class="form-group">
+                <label for="zip_code">CEP</label>
+                <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Digite o CEP" value="{$address.zip_code}">
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+  </section>
+  <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
