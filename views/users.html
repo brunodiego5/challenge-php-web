@@ -1,58 +1,46 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-<!-- Content Header (Page header) -->
-<section class="content-header">
-  <h1>
-    Lista de Usuários
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active"><a href="/users">Usuários</a></li>
-  </ol>
-</section>
+<div class="container">
 
-<!-- Main content -->
-<section class="content">
+  <div class="header-page">
+    <h1 class="title">Gerenciando Usuários</h1>
+    <div class="controls">
+      <a href="/users/create" class="button-link">
+        <i class="material-icons">add</i>
+        <span>Cadastrar</span>
+      </a>
 
-  <div class="row">
-  	<div class="col-md-12">
-  		<div class="box box-primary">
-            
-            <div class="box-header">
-              <a href="/users/create" class="btn btn-success">Cadastrar Usuário</a>
-            </div>
+      <form class="form-search">
+        <i class="material-icons">search</i>
+        <input class="search" type="text" placeholder="Buscar usuário">  
+      </form>
+      
 
-            <div class="box-body no-padding">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th style="width: 10px">#</th>
-                    <th>Nome</th>
-                    <th>E-mail</th>
-                    <th style="width: 140px">&nbsp;</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {loop="$users"}
-                  <tr>
-                    <td>{$value.id}</td>
-                    <td>{$value.name}</td>
-                    <td>{$value.email}</td>
-                    <td>
-                      <a href="/users/{$value.id}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                      <a href="/users/{$value.id}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
-                    </td>
-                  </tr>
-                  {/loop}
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-  	</div>
+    </div>
   </div>
 
-</section>
-<!-- /.content -->
+  <div class="panel">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        {loop="$users"}
+        <tr>
+          <td>{$value.id}</td>
+          <td>{$value.name}</td>
+          <td>{$value.email}</td>
+          <td>
+            <a href="/users/{$value.id}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
+            <a href="/users/{$value.id}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
+          </td>
+        </tr>
+        {/loop}
+      </tbody>
+    </table>
+  </div>
+
 </div>
-<!-- /.content-wrapper -->
