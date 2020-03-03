@@ -1,46 +1,45 @@
-<div class="container">
+  <div class="container">
 
-  <div class="header-page">
-    <h1 class="title">Gerenciando Usuários</h1>
-    <div class="controls">
-      <a href="/users/create" class="button-link">
-        <i class="material-icons">add</i>
-        <span>Cadastrar</span>
-      </a>
+    <div class="header-page">
+      <h1 class="title">Gerenciando Usuários</h1>
+      <div class="controls">
+        <a href="/users/create" class="button-link">
+          <i class="material-icons">add</i>
+          <span>Cadastrar</span>
+        </a>
 
-      <form class="form-search">
-        <i class="material-icons">search</i>
-        <input class="search" type="text" placeholder="Buscar usuário">  
-      </form>
-      
+        <form class="form-search">
+          <i class="material-icons">search</i>
+          <input class="search" type="text" placeholder="Buscar usuário">  
+        </form>
+        
 
+      </div>
+    </div>
+
+    <div class="panel">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          {loop="$users"}
+          <tr>
+            <td>{$value.id}</td>
+            <td>{$value.name}</td>
+            <td>{$value.email}</td>
+            <td>
+              <a href="/users/{$value.id}">Editar</a>
+              <a href="/users/{$value.id}/delete" onclick="return confirm('Deseja realmente excluir este registro?')">Excluir</a>
+            </td>
+          </tr>
+          {/loop}
+        </tbody>
+      </table>
     </div>
   </div>
-
-  <div class="panel">
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Nome</th>
-          <th>E-mail</th>
-          <th>&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-        {loop="$users"}
-        <tr>
-          <td>{$value.id}</td>
-          <td>{$value.name}</td>
-          <td>{$value.email}</td>
-          <td>
-            <a href="/users/{$value.id}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-            <a href="/users/{$value.id}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
-          </td>
-        </tr>
-        {/loop}
-      </tbody>
-    </table>
-  </div>
-
-</div>
