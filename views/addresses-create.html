@@ -1,56 +1,64 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-<!-- Content Header (Page header) -->
-<section class="content-header">
-  <h1>
-    Castastrar Endereço para o cliente {$customer.name}
-  </h1>
-</section>
+    <div class="container">
+      <div class="header-page">
+        <h1 class="title">Cadastro de endereço para o cliente {$customer.name}</h1>
+        <div class="controls">
+          <a href="/customers/{$customer.id}" class="button-link">
+            <i class="material-icons">keyboard_backspace</i>
+            <span>Voltar</span>
+          </a>
 
-<!-- Main content -->
-<section class="content">
+          <button class="button-save" type="submit" form="form">
+            <i class="material-icons">save</i>
+            <span>Salvar</span> 
+          </button>     
+        </div>
+      </div>
 
-  <div class="row">
-  	<div class="col-md-12">
-  		<div class="box box-primary">
-        <!-- form start -->
-        <form role="form" action="/customers/{$customer.id}/addresses/create" method="post">
-          <div class="box-body">
-            <div class="form-group">
-              <label for="address">Endereço</label>
-              <input type="text" class="form-control" id="address" name="address" placeholder="Digite o Endereço">
+      <div class="panel">
+        <form action="/customers/{$customer.id}/addresses/create" method="post" id="form">
+          <div class="row">
+            <div class="column">
+              <div class="form-group">
+                <label for="address">Endereço</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Digite o Endereço">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="complement">Complemento</label>
-              <input type="text" class="form-control" id="complement" name="complement" placeholder="Digite o Complemento">
+            <div class="column">
+              <div class="form-group">
+                <label for="complement">Complemento</label>
+                <input type="text" class="form-control" id="complement" name="complement" placeholder="Digite o Complemento">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="city">Cidade</label>
-              <input type="text" class="form-control" id="city" name="city" placeholder="Digite a cidade">
+            <div class="column">
+              <div class="form-group">
+                <label for="city">Cidade</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Digite a cidade">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="state">Estado</label>
-              <input type="text" class="form-control" id="state" name="state" placeholder="Digite o Estado">
+            <div class="column">
+              <div class="form-group">
+                <label for="state">Estado</label>
+                <input type="text" class="form-control" id="state" name="state" placeholder="Digite o Estado">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="country">País</label>
-              <input type="text" class="form-control" id="country" name="country" placeholder="Digite o país">
+            <div class="column">
+              <div class="form-group">
+                <label for="country">País</label>
+                <input type="text" class="form-control" id="country" name="country" placeholder="Digite o país">
+               </div>
             </div>
-            <div class="form-group">
-              <label for="zip_code">CEP</label>
-              <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Digite o CEP">
+            <div class="column">
+              <div class="form-group">
+                <label for="zip_code">CEP</label>
+                <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Digite o CEP">               
+              </div>
             </div>
-          </div>
-          <!-- /.box-body -->
-          <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Salvar</button>
-          </div>
         </form>
       </div>
-  	</div>
-  </div>
+    </div>
 
-</section>
-<!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+
+
+
+
+

@@ -1,49 +1,53 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-<!-- Content Header (Page header) -->
-<section class="content-header">
-  <h1>
-    Castastrar Cliente
-  </h1>
-</section>
+<div class="container">
 
-<!-- Main content -->
-<section class="content">
+  <div class="header-page">
+    <h1 class="title">Edição de cliente</h1>
+    <div class="controls">
+      <a href="/customers" class="button-link">
+        <i class="material-icons">keyboard_backspace</i>
+        <span>Voltar</span>
+      </a>
 
-  <div class="row">
-  	<div class="col-md-12">
-  		<div class="box box-primary">
-        <!-- form start -->
-        <form role="form" action="/customers/{$customer.id}" method="post">
-          <div class="box-body">
-            <div class="form-group">
-              <label for="name">Nome</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome" value="{$customer.name}">
-            </div>
-            <div class="form-group">
-              <label for="date_birth">Data de Nascimento</label>
-              <input type="text" class="form-control" id="date_birth" name="date_birth" placeholder="Digite a data de nascimento" value="{$customer.date_birth}">
-            </div>
-            <div class="form-group">
-              <label for="cpf">CPF</label>
-              <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o cpf" value="{$customer.cpf}">
-            </div>
-            <div class="form-group">
-              <label for="rg">RG</label>
-              <input type="text" class="form-control" id="rg" name="rg" placeholder="Digite o rg" value="{$customer.rg}">
-            </div>
-            <div class="form-group">
-              <label for="phone">Telefone</label>
-              <input type="text" class="form-control" id="phone" name="phone" placeholder="Digite o phone" value="{$customer.phone}">
-            </div>
-          </div>
-          <!-- /.box-body -->
-          <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Salvar</button>
-          </div>
+      <button class="button-save" type="submit" form="form">
+        <i class="material-icons">save</i>
+        <span>Salvar</span> 
+      </button>       
+    </div>
+  </div>
+
+  <div class="panel">
+        <form id="form" action="/customers/{$customer.id}" method="post">
+          <label for="name">Nome</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome" value="{$customer.name}">
+
+          <div class="row">
+            <div class="column">
+              <div class="form-group">
+                <label for="date_birth">Data de Nascimento</label>
+                <input type="date" onkeypress="return dateMask(this, event);" class="form-control" id="date_birth" name="date_birth" placeholder="Digite a data de nascimento" value="{function="StrToDate($customer.date_birth)"}" required>
+              </div>      
+            </div>      
+            <div class="column">
+              <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o cpf" value="{$customer.cpf}">
+              </div>      
+            </div>      
+            <div class="column">
+              <div class="form-group">
+                <label for="rg">RG</label>
+                <input type="text" class="form-control" id="rg" name="rg" placeholder="Digite o rg" value="{$customer.rg}">
+              </div>      
+            </div>      
+            <div class="column">
+              <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Digite o phone" value="{$customer.phone}">
+              </div>      
+            </div>      
         </form>
 
-        <!---->
+        <!--
         <div class="box-header">
           <a href="/customers/{$customer.id}/addresses/create" class="btn btn-success">Cadastrar Endereço</a>
         </div>
@@ -81,12 +85,7 @@
             </tbody>
           </table>
         </div>
-        <!-- /.box-body -->
+        -->
       </div>
-  	</div>
-  </div>
-
-</section>
-<!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+    </div>
+  

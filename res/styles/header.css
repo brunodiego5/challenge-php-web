@@ -65,7 +65,11 @@ header.container div.content aside div.profile div strong {
   color: #333;
 }
 
-header.container div.content aside div.profile div span {
+header.container div.content aside div.profile div a {
   cursor: pointer;
-  color: #DE3B3B;
+  color: #fa5b13;
+}
+
+header.container div.content aside div.profile div a span {
+  color: #fa5b13;
 }

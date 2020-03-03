@@ -1,0 +1,48 @@
+
+  <div class="container">
+    <div class="header-page">
+      <h2 class="title">Endereços</h2>
+      <div class="controls">
+        <a href="/customers/{$customer.id}/addresses/create" class="button-link">
+          <i class="material-icons">add</i>
+          <span>Novo</span>
+        </a>
+      </div>
+    </div>
+
+
+    <div class="panel">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Endereço</th>
+            <th>Complemento</th>
+            <th>cidade</th>
+            <th>Estado</th>
+            <th>País</th>
+            <th>CEP</th>
+            <th class="column-actions-header">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          {loop="$addresses"}
+          <tr>
+            <td>{$value.id}</td>
+            <td>{$value.address}</td>
+            <td>{$value.complement}</td>
+            <td>{$value.city}</td>
+            <td>{$value.state}</td>
+            <td>{$value.country}</td>
+            <td>{$value.zip_code}</td>
+            <td class="column-actions">
+              <a href="/customers/{$customer.id}/addresses/{$value.id}" class="edit">Editar</a>
+              <a href="/customers/{$customer.id}/addresses/{$value.id}/delete" class="delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs">Excluir</a>
+            </td>
+          </tr>
+          {/loop}
+        </tbody>
+      </table>
+    </div>
+  </div>
+

@@ -1,0 +1,105 @@
+div.container div.header-page div.controls  button.button-save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  background: #1370ba;
+  border: 0;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 0px 15px;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background 0.2s;
+  margin-left: 16px;
+}
+
+div.container div.header-page div.controls  button.button-save:hover {
+  background: #1d5993;
+}
+
+div.container div.header-page div.controls  button.button-save i {
+  margin-right: 5px;
+ }
+ 
+
+div.container div.header-page div.controls  button.button-save span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.container div.panel {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 4px;
+}
+
+div.container div.panel form {
+  display: flex;
+  flex-direction: column;
+}
+
+div.container div.panel form label {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  color: #444444;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+div.container div.panel form input {
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  height: 40px;
+  padding: 0 15px;
+  color: #333;
+  margin: 0 0 10px;
+  width: 100%;
+}
+
+div.container div.panel form div.row {
+  width: 100%;
+  height: auto;
+  float: left;
+  box-sizing: border-box;
+}
+
+div.container div.panel form div.row::before, div.container div.panel form div.row::after {
+  content: ' ';
+  display: table;
+}
+
+div.container div.panel form div.row::after {
+  clear: both;
+}
+
+div.container div.panel form div.row div.column {
+  float: left;
+  padding: 0.25rem;
+  min-height: 1px;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 768px) {
+  div.container div.panel form div.row div.column {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  div.container div.panel form div.row div.column {
+    width: 50%;
+  }
+}
+
+div.container div.panel form div.row div.column div.form-group {
+  display: flex;
+  flex-direction: column;
+}

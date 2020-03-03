@@ -40,5 +40,5 @@ CREATE TABLE `db_challenge_php_web`.`addresses` (
   `zip_code` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_addresses_customer_idx` (`customer_id`),
-  CONSTRAINT `fk_addresses_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_addresses_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

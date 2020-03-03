@@ -1,44 +1,38 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-<!-- Content Header (Page header) -->
-<section class="content-header">
-  <h1>
-    Lista de Usuários
-  </h1>
-</section>
+<div class="container">
 
-<!-- Main content -->
-<section class="content">
+  <div class="header-page">
+    <h1 class="title">Edição de usuário</h1>
+    <div class="controls">
+      <a href="/users" class="button-link">
+        <i class="material-icons">keyboard_backspace</i>
+        <span>Voltar</span>
+      </a>
 
-  <div class="row">
-  	<div class="col-md-12">
-  		<div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">Editar Usuário</h3>
-        </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <form role="form" action="/users/{$user.id}" method="post">
-          <div class="box-body">
-            <div class="form-group">
-              <label for="name">Nome</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome" value="{$user.name}">
+      <button class="button-save" type="submit" form="form">
+        <i class="material-icons">save</i>
+        <span>Salvar</span> 
+      </button>       
+    </div>
+  </div>
+
+  <div class="panel">
+        <form id="form" action="/users/{$user.id}" method="post">
+          <div class="row">
+            <div class="column">
+              <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" placeholder="Digite o nome" required value="{$user.name}">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="Digite o e-mail" value="{$user.email}">
+
+            <div class="column">
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="Digite o e-mail" required value="{$user.email}">
+              </div>
             </div>
-          </div>
-          <!-- /.box-body -->
-          <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Salvar</button>
           </div>
         </form>
       </div>
-  	</div>
-  </div>
-
-</section>
-<!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+    </div>
+  

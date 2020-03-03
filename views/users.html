@@ -8,12 +8,10 @@
           <span>Cadastrar</span>
         </a>
 
-        <form class="form-search">
+        <form action="/users" class="form-search" id="formSearch">
           <i class="material-icons">search</i>
-          <input class="search" type="text" placeholder="Buscar usuário">  
-        </form>
-        
-
+          <input class="search" type="text" placeholder="Buscar usuário" value="{$search}" id="inputSearch" name="search">  
+        </form>     
       </div>
     </div>
 
@@ -24,7 +22,7 @@
             <th>#</th>
             <th>Nome</th>
             <th>E-mail</th>
-            <th>&nbsp;</th>
+            <th class="column-actions-header">&nbsp;</th>
           </tr>
         </thead>
         <tbody>
@@ -33,13 +31,20 @@
             <td>{$value.id}</td>
             <td>{$value.name}</td>
             <td>{$value.email}</td>
-            <td>
-              <a href="/users/{$value.id}">Editar</a>
-              <a href="/users/{$value.id}/delete" onclick="return confirm('Deseja realmente excluir este registro?')">Excluir</a>
+            <td class="column-actions">
+              <a href="/users/{$value.id}" class="edit">Editar</a>
+              <a href="/users/{$value.id}/delete" class="delete" onclick="return confirm('Deseja realmente excluir este registro?')">Excluir</a>
             </td>
           </tr>
           {/loop}
         </tbody>
       </table>
     </div>
+
+    <ul class="paginator">
+      {loop="$pages"}
+      <li class="pageitem"><a href="{$value.href}">{$value.text}</a> </li>
+      {/loop}
+    </ul>
+
   </div>

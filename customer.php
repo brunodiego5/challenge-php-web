@@ -56,6 +56,8 @@ $app->get('/customers/:customerId', function($customerId) {
 		"customer"=>$customer->getValues(),
 		"addresses"=>$addresses
 	));
+
+	$page->setTpl("addresses"); 
 });
 
 $app->post('/customers/create', function() {
@@ -68,7 +70,7 @@ $app->post('/customers/create', function() {
 
 	$customer->save();
 
-	header("Location: /customers");
+	header("Location: /customers/".$customer->getid());
 	exit;
 });
 
