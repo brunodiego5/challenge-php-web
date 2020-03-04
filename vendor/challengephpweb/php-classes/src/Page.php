@@ -55,8 +55,14 @@ class Page {
   {
     $this->setData($data);
 
-    return $this->tpl->draw($this->name, $returnHTML);
+    return $this->setPage($this->name, $returnHTML);
   }
+
+  public function setPage($namepage, $returnHTML = false)
+  {
+    return $this->tpl->draw($namepage, $returnHTML);
+  }
+
 
   public function __destruct()
   {

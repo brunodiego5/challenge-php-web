@@ -82,7 +82,7 @@ $app->get('/customers/:customerId', function($customerId) {
 		"addresses"=>$addresses
 	));
 
-	$page->setTpl("addresses"); 
+	$page->setPage("addresses"); 
 });
 
 $app->post('/customers/create', function() {
