@@ -27,15 +27,15 @@
         </thead>
         <tbody>
           <?php $counter1=-1;  if( isset($users) && ( is_array($users) || $users instanceof Traversable ) && sizeof($users) ) foreach( $users as $key1 => $value1 ){ $counter1++; ?>
-          <tr>
-            <td><?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-            <td><?php echo htmlspecialchars( $value1["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-            <td><?php echo htmlspecialchars( $value1["email"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
-            <td class="column-actions">
-              <a href="/users/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="edit">Editar</a>
-              <a href="/users/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" class="delete" onclick="return confirm('Deseja realmente excluir este registro?')">Excluir</a>
-            </td>
-          </tr>
+            <tr>
+              <td><?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+              <td><?php echo htmlspecialchars( $value1["name"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+              <td><?php echo htmlspecialchars( $value1["email"], ENT_COMPAT, 'UTF-8', FALSE ); ?></td>
+              <td class="column-actions">
+                <a href="/users/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" class="edit">Editar</a>
+                <a href="/users/<?php echo htmlspecialchars( $value1["id"], ENT_COMPAT, 'UTF-8', FALSE ); ?>/delete" class="delete" onclick="return confirm('Deseja realmente excluir este registro?')">Excluir</a>
+              </td>
+            </tr>
           <?php } ?>
         </tbody>
       </table>
@@ -47,4 +47,5 @@
       <?php } ?>
     </ul>
 
+     
   </div>

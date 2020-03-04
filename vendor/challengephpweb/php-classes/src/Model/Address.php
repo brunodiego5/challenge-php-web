@@ -56,6 +56,8 @@ class Address extends Model{
       ":zip_code"=>utf8_decode($this->getzip_code())
     ));
 
+    $_SESSION['registerSaved'] = "Registro salvo com sucesso.";
+
     $this->get($addressId);
 
   }
@@ -83,6 +85,8 @@ class Address extends Model{
       ":id"=>$addressId
     ));
 
+    $_SESSION['registerSaved'] = "Registro salvo com sucesso.";
+
     $this->get($addressId);
 
 
@@ -95,6 +99,8 @@ class Address extends Model{
     $sql->query("delete from addresses where id = :id ", array(
       ":id"=>$this->getid()
     ));
+
+    $_SESSION['registerDeleted'] = "Registro excluído com sucesso.";
    
   }
 

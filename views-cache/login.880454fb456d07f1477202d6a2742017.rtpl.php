@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="/res/styles/global.css">
   <link rel="stylesheet" href="/res/styles/login.css">
+  <link rel="stylesheet" href="/res/styles/toasty.min.css">  
 
   <title>Log in</title>
 </head>
@@ -21,6 +22,16 @@
     </form>
   </div>
 </div>
+  <script type="text/javascript" src="/res/js/toasty.min.js"></script>
+  <?php if( isset($_SESSION['loginError']) && $_SESSION['loginError'] !== '' ){ ?>
+
+  <?php $_SESSION['loginError']=''; ?>
+
+  <script>
+    var toast = new Toasty({transition: "pinItUp", progressBar: true});
+    toast.error("Usuário inexistente ou senha inválida.");
+  </script>
+  <?php } ?>
 
 </body>
 </html>

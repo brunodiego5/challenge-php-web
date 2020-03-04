@@ -25,7 +25,7 @@
             <th>Data de Nascimento</th>
             <th>CPF</th>
             <th>RG</th>
-            <th>Telefone</th>
+            <th>Celular</th>
             <th class="column-actions-header">&nbsp;</th>
           </tr>
         </thead>

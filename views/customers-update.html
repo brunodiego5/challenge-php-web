@@ -30,7 +30,7 @@
             <div class="column">
               <div class="form-group">
                 <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o cpf" value="{$customer.cpf}">
+                <input type="text" class="form-control cpf" id="cpf" name="cpf" placeholder="Digite o cpf" value="{$customer.cpf}">
               </div>      
             </div>      
             <div class="column">
@@ -41,51 +41,11 @@
             </div>      
             <div class="column">
               <div class="form-group">
-                <label for="phone">Telefone</label>
-                <input type="text" class="form-control" id="phone" name="phone" placeholder="Digite o phone" value="{$customer.phone}">
+                <label for="phone">Celular</label>
+                <input type="text" class="form-control smartphone_ddd_br" id="phone" name="phone" placeholder="Digite o phone" value="{$customer.phone}">
               </div>      
             </div>      
         </form>
-
-        <!--
-        <div class="box-header">
-          <a href="/customers/{$customer.id}/addresses/create" class="btn btn-success">Cadastrar Endereço</a>
-        </div>
-
-        <div class="box-body no-padding">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th style="width: 10px">#</th>
-                <th>Endereço</th>
-                <th>Complemento</th>
-                <th>cidade</th>
-                <th>Estado</th>
-                <th>País</th>
-                <th>CEP</th>
-                <th style="width: 140px">&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
-              {loop="$addresses"}
-              <tr>
-                <td>{$value.id}</td>
-                <td>{$value.address}</td>
-                <td>{$value.complement}</td>
-                <td>{$value.city}</td>
-                <td>{$value.state}</td>
-                <td>{$value.country}</td>
-                <td>{$value.zip_code}</td>
-                <td>
-                  <a href="/customers/{$customer.id}/addresses/{$value.id}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
-                  <a href="/customers/{$customer.id}/addresses/{$value.id}/delete" onclick="return confirm('Deseja realmente excluir este registro?')" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Excluir</a>
-                </td>
-              </tr>
-              {/loop}
-            </tbody>
-          </table>
-        </div>
-        -->
       </div>
     </div>
   

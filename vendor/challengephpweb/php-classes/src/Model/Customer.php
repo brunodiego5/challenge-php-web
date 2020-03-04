@@ -46,6 +46,8 @@ class Customer extends Model{
       ":phone"=>$this->getphone()
     ));
 
+    $_SESSION['registerSaved'] = "Registro salvo com sucesso.";
+
     $this->get($customerId);
 
   }
@@ -69,6 +71,8 @@ class Customer extends Model{
       ":id"=>$customerId
     ));
 
+    $_SESSION['registerSaved'] = "Registro salvo com sucesso.";
+
     $this->get($customerId);
 
 
@@ -81,6 +85,8 @@ class Customer extends Model{
     $sql->query("delete from customers where id = :id ", array(
       ":id"=>$this->getid()
     ));
+
+    $_SESSION['registerDeleted'] = "Registro excluído com sucesso.";
    
   }
 

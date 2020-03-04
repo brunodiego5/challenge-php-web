@@ -34,10 +34,11 @@ class User extends Model{
       $_SESSION[User::SESSION] = $user->getValues();
 
       return $user;
-
-
+ 
     } else {
-      throw new \Exception("Usuário inexistente ou senha inválida.", 1);
+      $_SESSION['loginError'] = "Usuário inexistente ou senha inválida.";
+      header("Location: /login");
+      exit;
     }
 
   }
@@ -116,8 +117,9 @@ class User extends Model{
       ":password"=>$this->getpassword()
     ));
 
-    $this->get($userId);
+    $_SESSION['registerSaved'] = "Registro salvo com sucesso.";
 
+    $this->get($userId);
   }
 
 
@@ -137,6 +139,8 @@ class User extends Model{
       ":id"=>$userId
     ));
 
+    $_SESSION['registerSaved'] = "Registro salvo com sucesso.";
+
     $this->get($userId);
 
   }
@@ -148,6 +152,8 @@ class User extends Model{
     $sql->query("delete from users where id = :id ", array(
       ":id"=>$this->getid()
     ));   
+
+    $_SESSION['registerDeleted'] = "Registro excluído com sucesso.";
   }
 
   public static function getPage($page = 1, $itemsPerPage = 10)

@@ -130,6 +130,10 @@ $app->post('/users/create', function() {
 	$user->save();
 
 	header("Location: /users");
+	echo "<script>
+  	toast.success('Usuário salvo com sucesso!');
+    </script>";
+	
 	exit;
 });
 

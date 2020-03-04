@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="/res/styles/list.css">
   <link rel="stylesheet" href="/res/styles/form.css">
   <link rel="stylesheet" href="/res/styles/index.css">
+  <link rel="stylesheet" href="/res/styles/toasty.min.css">
   <title>Challenge PHP Web</title>
 </head>
 <body>
