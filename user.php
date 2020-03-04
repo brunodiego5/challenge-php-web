@@ -7,21 +7,18 @@ $app->get('/', function() {
 
 	User::verifyLogin();
 
-	$page = new Page();
-
-	$page->setTpl("index");
-
+	header("Location: /customers");
+	exit;
 });
 
 $app->get('/login', function() {
 
-	$page = new Page([
+	$page = new Page("login", [
 		"header"=>false,
 		"footer"=>false
-	]);
+	]);	
 
-	$page->setTpl("login");
-	
+	$page->setTpl();
 });
 
 $app->post('/login', function() {
@@ -45,12 +42,12 @@ $app->get('/users', function() {
 	User::verifyLogin();
 
 	$search = (isset($_GET['search'])) ? $_GET['search'] : "";
-	$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+	$pagenumber = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 
 	if ($search != '') {
-		$pagination = User::getPageSearch($search, $page, 10);
+		$pagination = User::getPageSearch($search, $pagenumber, 10);
 	} else {
-		$pagination = User::getPage($page, 10);
+		$pagination = User::getPage($pagenumber, 10);
 	}
 
 	$pages = [];
@@ -66,12 +63,13 @@ $app->get('/users', function() {
 		]);
 	}
 
-	$page = new Page();
+	$page = new Page("users");
 
-	$page->setTpl("users", array(
+	$page->setTpl(array(
 		"users"=>$pagination['data'],
 		"search"=>$search,
-		"pages"=>$pages
+		"pages"=>$pages,
+		"pagenumber"=>$pagenumber
 	));
 });
 
@@ -79,9 +77,9 @@ $app->get('/users/create', function() {
 	
 	User::verifyLogin();
 
-	$page = new Page();
+	$page = new Page("users-create");
 
-	$page->setTpl("users-create");
+	$page->setTpl();
 });
 
 $app->get('/users/:userId/delete', function($userId) {
@@ -109,10 +107,9 @@ $app->get('/users/:userId', function($userId) {
 
 	$user->get((int)$userId);
 
-	$page = new Page();
+	$page = new Page("users-update");
 
-
-	$page->setTpl("users-update", array(
+	$page->setTpl(array(
 		"user"=>$user->getValues()
 	));
 });

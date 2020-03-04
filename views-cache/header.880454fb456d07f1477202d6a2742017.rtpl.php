@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -22,17 +22,17 @@
             </a>
             <ul>
               <li>
-                <a href="/users" class="menu{if="$pagename === 'users'"} active{/if}">Usuários</a>
+                <a href="/users" class="menu<?php if( $pagename === 'users' ){ ?> active<?php } ?>">Usuários</a>
               </li>
               <li>
-                <a href="/customers" class="menu{if="$pagename === 'customers'"} active{/if}">Clientes</a>
+                <a href="/customers" class="menu<?php if( $pagename === 'customers' ){ ?> active<?php } ?>">Clientes</a>
               </li>
             </ul>
           </nav>
           <aside>
             <div class="profile">
               <div>
-                <strong>{function="getUserName()"}</strong>
+                <strong><?php echo getUserName(); ?></strong>
                 <a href="/logout"><span>sair do sistema</span></a>
               </div>
             </div>

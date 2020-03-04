@@ -70,21 +70,38 @@ div.container div.panel table tbody tr td.column-actions a.delete {
 }
 
 div.container ul.paginator {
+  margin-top: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
-div.container ul.paginator li.pageitem {
+div.container ul.paginator a {
+  color: #fff;
+  font-weight: bold;
+}
+
+div.container ul.paginator  a li.pageitem {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #fff;
-  background-color: #fa5b13;
   border: 1px solid #dee2e6;
+  color: #fa5b13;
+  background-color: #fff;  
 }
 
-div.container ul.paginator li.pageitem:hover {
-    background-color: #d74909;
-    border-color: #fa5b13;
-  }
+div.container ul.paginator  a li.active {
+  color: #fff;
+  background-color: #fa5b13;
+}
+
+div.container ul.paginator a li.pageitem:hover {
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+div.container ul.paginator a li.active:hover {
+  background-color: #fa5b13;
+  border-color: #fa5b13;
+}

@@ -9,22 +9,47 @@ $app->get('/customers', function() {
 	
 	User::verifyLogin();
 
-	$customers = Customer::listAll();
+	$search = (isset($_GET['search'])) ? $_GET['search'] : "";
+	$pagenumber = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 
-	$page = new Page();
+	if ($search != '') {
+		$pagination = Customer::getPageSearch($search, $pagenumber, 10);
+	} else {
+		$pagination = Customer::getPage($pagenumber, 10);
+	}
 
-	$page->setTpl("customers", array(
-		"customers"=>$customers
+	$pages = [];
+
+	for ($x = 0; $x < $pagination['pages']; $x++)
+	{
+		array_push($pages, [
+			'href'=>'/customers?'.http_build_query([
+				'page'=>$x+1,
+				'search'=>$search
+			]),
+			'text'=>$x+1
+		]);
+	}
+
+	$page = new Page("customers");
+
+	$page->setTpl(array(
+		"customers"=>$pagination['data'],
+		"search"=>$search,
+		"pages"=>$pages,
+		"pagenumber"=>$pagenumber
 	));
 });
+
+
 
 $app->get('/customers/create', function() {
 	
 	User::verifyLogin();
 
-	$page = new Page();
+	$page = new Page("customers-create");
 
-	$page->setTpl("customers-create");
+	$page->setTpl();
 });
 
 $app->get('/customers/:customerId/delete', function($customerId) {
@@ -50,9 +75,9 @@ $app->get('/customers/:customerId', function($customerId) {
 
 	$addresses = Address::listAll((int)$customerId);
 
-	$page = new Page();
+	$page = new Page("customers-update");
 
-	$page->setTpl("customers-update", array(
+	$page->setTpl(array(
 		"customer"=>$customer->getValues(),
 		"addresses"=>$addresses
 	));

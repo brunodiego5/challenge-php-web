@@ -43,6 +43,10 @@ header.container div.content nav ul li a.menu {
   color: #999;
 }
 
+header.container div.content nav ul li a.active {
+  color: #333;
+}
+
 header.container div.content aside {
     display: flex;
     align-items: center;

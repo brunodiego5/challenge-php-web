@@ -9,13 +9,13 @@ $app->get('/customers/:customerId/addresses/create', function($customerId) {
 	
 	User::verifyLogin();
 
-  $page = new Page();
+  $page = new Page("addresses-create");
   
   $customer = new Customer();
   $customer->get((int)$customerId);
 
-	$page->setTpl("addresses-create", array(
-    "customer"=>$customer->getValues()
+	$page->setTpl(array(
+		"customer"=>$customer->getValues()
   ));
 });
 
@@ -43,9 +43,9 @@ $app->get('/customers/:customerId/addresses/:addressId', function($customerId, $
 	$address = new Address();
 	$address->get((int)$addressId);
 
-	$page = new Page();
+	$page = new Page("addresses-update");
 
-	$page->setTpl("addresses-update", array(
+	$page->setTpl(array(
     "customer"=>$customer->getValues(),
 		"address"=>$address->getValues()
 	));

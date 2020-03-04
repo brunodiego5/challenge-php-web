@@ -5,6 +5,7 @@ namespace Cpw;
 use Rain\Tpl;
 
 class Page {
+  private $name;
   private $tpl;
   private $options = [];
   private $defaults = [
@@ -13,9 +14,10 @@ class Page {
     "data"=>[]
   ];
 
-  public function __construct($opts = array(), $tpl_dir = "/views/")
+  public function __construct($namePage, $opts = array(), $tpl_dir = "/views/")
   {
     $this->options = array_merge($this->defaults, $opts);
+    $this->name = $namePage;
 
     // config
     $config = array(
@@ -32,6 +34,10 @@ class Page {
 
     $this->setData($this->options["data"]);
 
+    $this->setData(array(
+      "pagename"=>$this->name
+    ));
+
     if ($this->options["header"] === true)
     {
       $this->tpl->draw("header");
@@ -45,11 +51,11 @@ class Page {
 
   }
 
-  public function setTpl($name, $data = array(), $returnHTML = false)
+  public function setTpl($data = array(), $returnHTML = false)
   {
     $this->setData($data);
 
-    return $this->tpl->draw($name, $returnHTML);
+    return $this->tpl->draw($this->name, $returnHTML);
   }
 
   public function __destruct()

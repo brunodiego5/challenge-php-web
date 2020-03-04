@@ -10,7 +10,7 @@
 
         <form action="/users" class="form-search" id="formSearch">
           <i class="material-icons">search</i>
-          <input class="search" type="text" placeholder="Buscar usuário" value="{$search}" id="inputSearch" name="search">  
+          <input class="search" type="text" placeholder="Buscar usuário <enter>" value="{$search}" id="inputSearch" name="search">  
         </form>     
       </div>
     </div>
@@ -43,7 +43,7 @@
 
     <ul class="paginator">
       {loop="$pages"}
-      <li class="pageitem"><a href="{$value.href}">{$value.text}</a> </li>
+      <a href="{$value.href}"><li class="pageitem{if="$pagenumber === $value.text"} active{/if}">{$value.text}</li></a>
       {/loop}
     </ul>
 

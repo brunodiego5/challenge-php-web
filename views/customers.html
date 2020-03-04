@@ -8,11 +8,10 @@
           <span>Cadastrar</span>
         </a>
 
-        <form class="form-search">
+        <form action="/customers" class="form-search" id="formSearch">
           <i class="material-icons">search</i>
-          <input class="search" type="text" placeholder="Buscar cliente">  
-        </form>
-        
+          <input class="search" type="text" placeholder="Buscar cliente <enter>" value="{$search}" id="inputSearch" name="search">  
+        </form>               
 
       </div>
     </div>
@@ -48,4 +47,11 @@
         </tbody>
       </table>
     </div>
+
+    <ul class="paginator">
+      {loop="$pages"}
+      <a href="{$value.href}"><li class="pageitem{if="$pagenumber === $value.text"} active{/if}">{$value.text}</li></a>
+      {/loop}
+    </ul>
+
   </div>
