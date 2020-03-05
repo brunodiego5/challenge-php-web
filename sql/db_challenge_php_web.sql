@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS `db_challenge_php_web`.`customers`;
 CREATE TABLE `db_challenge_php_web`.`customers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `date_birth` timestamp NULL,
+  `date_birth` datetime NULL,
   `cpf` varchar(20) NULL,
   `rg` varchar(20) NULL,
   `phone` varchar(20) NULL,
