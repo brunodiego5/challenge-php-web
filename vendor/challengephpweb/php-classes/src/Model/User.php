@@ -19,7 +19,9 @@ class User extends Model{
 
     if (count($results) === 0)
     {
-      throw new \Exception("Usuário inexistente ou senha inválida.", 1);
+      $_SESSION['loginError'] = "Usuário inexistente ou senha inválida.";
+      header("Location: /login");
+      exit;
     }
 
     $data = $results[0];
