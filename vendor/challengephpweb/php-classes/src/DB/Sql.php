@@ -37,7 +37,7 @@ class Sql {
 	private function bindParam($statement, $key, $value)
 	{
 
-		$statement->bindParam($key, $value);
+		$statement->bindParam($key, $value, \PDO::PARAM_STR);
 
 	}
 

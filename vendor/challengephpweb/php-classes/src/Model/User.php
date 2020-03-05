@@ -165,10 +165,12 @@ class User extends Model{
 
 		$results = $sql->select("SELECT SQL_CALC_FOUND_ROWS * FROM users ORDER BY name LIMIT $start, $itemsPerPage;");
 
-		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+    $resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+
+    $users = User::utf8_string_array_encode($results);
 
 		return [
-			'data'=>$results,
+			'data'=>$users,
 			'total'=>(int)$resultTotal[0]["nrtotal"],
 			'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
 		];
@@ -188,7 +190,9 @@ class User extends Model{
           ':search' =>'%'.$search.'%'
         ]);
 
-		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+    $resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+    
+    $users = User::utf8_string_array_encode($results);
 
 		return [
 			'data'=>$results,

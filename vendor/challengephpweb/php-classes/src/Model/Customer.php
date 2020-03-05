@@ -5,6 +5,7 @@ namespace Cpw\Model;
 use \Cpw\DB\Sql;
 use \Cpw\Model;
 
+
 class Customer extends Model{
   public static function listAll()
   {
@@ -99,10 +100,12 @@ class Customer extends Model{
 
 		$results = $sql->select("SELECT SQL_CALC_FOUND_ROWS * FROM customers ORDER BY name LIMIT $start, $itemsPerPage;");
 
-		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
+    $resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
 
-		return [
-			'data'=>$results,
+    $customers = Customer::utf8_string_array_encode($results); 
+    
+    return [
+			'data'=>$customers,
 			'total'=>(int)$resultTotal[0]["nrtotal"],
 			'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
 		];
@@ -122,10 +125,12 @@ class Customer extends Model{
           ':search' =>'%'.$search.'%'
         ]);
 
+    $customers = Customer::utf8_string_array_encode($results);    
+
 		$resultTotal = $sql->select("SELECT FOUND_ROWS() AS nrtotal;");
 
 		return [
-			'data'=>$results,
+			'data'=>$customers,
 			'total'=>(int)$resultTotal[0]["nrtotal"],
 			'pages'=>ceil($resultTotal[0]["nrtotal"] / $itemsPerPage)
 		];
